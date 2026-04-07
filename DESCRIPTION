@@ -1,0 +1,26 @@
+Package: rvt
+Title: Relief Visualization Toolbox for R
+Version: 0.1.0
+Authors@R: c(
+    person("Nick", "Gauthier", , "ngauthier@ufl.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-6605-3470")),
+    person("Anthropic", "Claude", role = "aut",
+           comment = "R port of rvt-py algorithms")
+  )
+Description: Pure R implementation of the Relief Visualization Toolbox (RVT)
+    algorithms for terrain visualization from LiDAR data. Computes hillshade,
+    slope, sky-view factor, positive openness, simple local relief model, and
+    the Visualization for Archaeological Topography (VAT) composite blend.
+    Faithful port of rvt-py (Kokalj et al.) with no Python dependency.
+License: Apache License (>= 2)
+URL: https://github.com/nick-gauthier/rvt
+BugReports: https://github.com/nick-gauthier/rvt/issues
+Depends:
+    R (>= 4.1.0)
+Suggests:
+    terra,
+    testthat (>= 3.0.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Config/testthat/edition: 3
