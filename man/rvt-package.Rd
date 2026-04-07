@@ -11,8 +11,8 @@ Pure R implementation of the Relief Visualization Toolbox (RVT) algorithms for t
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/nick-gauthier/rvt}
-  \item Report bugs at \url{https://github.com/nick-gauthier/rvt/issues}
+  \item \url{https://github.com/flmnh-ai/rvt}
+  \item Report bugs at \url{https://github.com/flmnh-ai/rvt/issues}
 }
 
 }
