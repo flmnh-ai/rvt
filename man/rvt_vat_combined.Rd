@@ -10,7 +10,7 @@ rvt_vat_combined(
   res_y,
   general_opacity = 50,
   svf_n_dir = 16L,
-  ve_factor = 1,
+  ve_factor = NULL,
   verbose = TRUE
 )
 }
@@ -24,7 +24,8 @@ default 50).}
 
 \item{svf_n_dir}{SVF search directions.}
 
-\item{ve_factor}{Vertical exaggeration.}
+\item{ve_factor}{Vertical exaggeration. If \code{NULL} (default), each sub-call
+uses its terrain preset's \code{ve_default}.}
 
 \item{verbose}{Print progress?}
 }

@@ -13,7 +13,7 @@ rvt_vat(
   svf_r_max = NULL,
   svf_noise = NULL,
   hs_sun_el = NULL,
-  ve_factor = 1,
+  ve_factor = NULL,
   verbose = TRUE
 )
 }
@@ -34,7 +34,9 @@ rvt_vat(
 
 \item{hs_sun_el}{Hillshade sun elevation in degrees (\code{NULL} = terrain preset).}
 
-\item{ve_factor}{Vertical exaggeration (default 1).}
+\item{ve_factor}{Vertical exaggeration. If \code{NULL} (default), uses the
+terrain preset's \code{ve_default} (e.g. 3 for \code{"flat"}). This differs from
+rvt-py, which always defaults to 1 regardless of preset.}
 
 \item{verbose}{Print progress messages? (default TRUE)}
 }

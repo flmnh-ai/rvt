@@ -127,7 +127,9 @@ normalize_vis <- function(image, vis_type, min_val, max_val) {
 #' @param svf_r_max SVF search radius in pixels (`NULL` = terrain preset).
 #' @param svf_noise SVF noise level 0--3 (`NULL` = terrain preset).
 #' @param hs_sun_el Hillshade sun elevation in degrees (`NULL` = terrain preset).
-#' @param ve_factor Vertical exaggeration (default 1).
+#' @param ve_factor Vertical exaggeration. If `NULL` (default), uses the
+#'   terrain preset's `ve_default` (e.g. 3 for `"flat"`). This differs from
+#'   rvt-py, which always defaults to 1 regardless of preset.
 #' @param verbose Print progress messages? (default TRUE)
 #' @return Numeric matrix of blended values \[0, 1\].
 #' @export
@@ -140,11 +142,12 @@ rvt_vat <- function(dem, res_x, res_y,
                     terrain = "general",
                     svf_n_dir = 16L,
                     svf_r_max = NULL, svf_noise = NULL, hs_sun_el = NULL,
-                    ve_factor = 1, verbose = TRUE) {
+                    ve_factor = NULL, verbose = TRUE) {
   t <- rvt_terrain(terrain)
   svf_r_max <- svf_r_max %||% t$svf_r_max
   svf_noise <- svf_noise %||% t$svf_noise
   hs_sun_el <- hs_sun_el %||% t$hs_sun_el
+  ve_factor <- ve_factor %||% t$ve_default
   t0 <- proc.time()
 
   if (verbose) message("[1/4] Slope & aspect...")
@@ -192,13 +195,14 @@ rvt_vat <- function(dem, res_x, res_y,
 #' @param general_opacity Opacity of the general-terrain layer (0--100,
 #'   default 50).
 #' @param svf_n_dir SVF search directions.
-#' @param ve_factor Vertical exaggeration.
+#' @param ve_factor Vertical exaggeration. If `NULL` (default), each sub-call
+#'   uses its terrain preset's `ve_default`.
 #' @param verbose Print progress?
 #' @return Numeric matrix of blended values \[0, 1\].
 #' @export
 rvt_vat_combined <- function(dem, res_x, res_y,
                              general_opacity = 50,
-                             svf_n_dir = 16L, ve_factor = 1,
+                             svf_n_dir = 16L, ve_factor = NULL,
                              verbose = TRUE) {
   if (verbose) message("=== VAT General ===")
   vat_gen <- rvt_vat(dem, res_x, res_y, "general", svf_n_dir,

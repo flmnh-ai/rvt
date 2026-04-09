@@ -181,7 +181,8 @@ rvt_svf_compute <- function(height, r_max, r_min, n_dir,
 #' directions.
 #'
 #' @param dem Numeric matrix of elevations.
-#' @param resolution Pixel size in metres (single value; assumed square).
+#' @param resolution Pixel size in metres (single value; assumes square pixels,
+#'   matching rvt-py behaviour).
 #' @param n_dir Number of search directions (default 16).
 #' @param r_max Search radius in pixels (default 10).
 #' @param noise Noise removal level 0--3 (default 0). Higher values skip

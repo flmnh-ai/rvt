@@ -79,6 +79,13 @@ blend_dispatch("multiply", layer_a, layer_b)
 # Supported: normal, multiply, screen, overlay, soft_light, luminosity
 ```
 
+## Differences from rvt-py
+
+This package is a faithful port with two intentional improvements:
+
+- **Automatic vertical exaggeration.** `rvt_vat()` and `rvt_vat_combined()` default `ve_factor = NULL`, which applies the terrain preset's recommended VE (e.g. 3 for `"flat"`). In rvt-py, VE always defaults to 1 regardless of preset. Pass `ve_factor = 1` explicitly to match rvt-py behaviour.
+- **Square pixels assumed for SVF/openness.** `rvt_sky_view_factor()` takes a single `resolution` parameter, same as rvt-py. Non-square pixels are not supported for horizon tracing.
+
 ## References
 
 - Kokalj, Z. & Somrak, M. (2019). Why not a single image? Combining visualizations to facilitate fieldwork and on-screen mapping. *Remote Sensing*, 11(7), 747.

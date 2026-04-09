@@ -19,7 +19,8 @@ rvt_sky_view_factor(
 \arguments{
 \item{dem}{Numeric matrix of elevations.}
 
-\item{resolution}{Pixel size in metres (single value; assumed square).}
+\item{resolution}{Pixel size in metres (single value; assumes square pixels,
+matching rvt-py behaviour).}
 
 \item{n_dir}{Number of search directions (default 16).}
 
